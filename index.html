@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shrikant Sharma — Data Scientist</title>
+<meta name="description" content="Shrikant Sharma — Data Scientist with ~8 years across pharma compliance at Amgen and financial services risk at American Express. Shipping production ML, agentic AI, and grounded RAG for regulated industries.">
+<meta name="author" content="Shrikant Sharma">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shrikant Sharma — Data Scientist">
+<meta property="og:description" content="Shipping production ML, agentic AI, and grounded RAG for regulated industries.">
+
+<!-- Favicon: navy square with cyan S -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a1628'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='62' font-weight='500' text-anchor='middle' fill='%2334d4e4'%3ES%3C/text%3E%3C/svg%3E">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0a1628;
+    --bg-secondary: #0d1d33;
+    --surface: #111e36;
+    --surface-elevated: #152441;
+    --border: #1f3460;
+    --border-bright: #2a4a85;
+    --text: #ffffff;
+    --text-secondary: #c4d0e4;
+    --text-muted: #8294b5;
+    --text-dim: #5f7194;
+    --accent: #34d4e4;
+    --accent-dim: #1ea5b8;
+    --accent-deep: #126b7a;
+    --accent-glow: rgba(52, 212, 228, 0.15);
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', 'SF Mono', Menlo, monospace;
+    --content-width: 1100px;
+    --content-narrow: 880px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-secondary);
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 85% 10%, var(--accent-glow), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 10% 70%, rgba(30, 165, 184, 0.06), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+  }
+
+  main, nav, footer { position: relative; z-index: 2; }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(10, 22, 40, 0.7);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .nav-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 18px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav .brand {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 14, "SOFT" 50;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.01em;
+  }
+  nav ul { display: flex; list-style: none; gap: 36px; }
+  nav ul a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+  nav ul a:hover { color: var(--accent); }
+  nav ul a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -6px;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  nav ul a:hover::after { transform: scaleX(1); }
+
+  section {
+    padding: 120px 32px;
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+  section.narrow { max-width: var(--content-narrow); }
+
+  #hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 140px;
+    padding-bottom: 80px;
+  }
+  #hero .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.1s forwards;
+  }
+  #hero .eyebrow span {
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+    vertical-align: middle;
+    margin-right: 14px;
+  }
+  #hero h1 {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-size: clamp(64px, 11vw, 132px);
+    font-weight: 400;
+    line-height: 0.95;
+    color: var(--text);
+    letter-spacing: -0.035em;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.25s forwards;
+  }
+  #hero .subhead {
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1.4;
+    margin-bottom: 48px;
+    max-width: 760px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s forwards;
+  }
+  #hero .elevator p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.55s forwards;
+  }
+  #hero .elevator p + p { animation-delay: 0.65s; }
+  #hero .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 48px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.8s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 22px;
+    border: 1px solid var(--border-bright);
+    background: transparent;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+  .btn:hover {
+    background: var(--accent-glow);
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+  }
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--accent);
+  }
+  .btn-icon { padding: 13px 16px; }
+  .btn svg { width: 16px; height: 16px; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-label::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 96, "SOFT" 40;
+    font-size: clamp(42px, 5.5vw, 64px);
+    font-weight: 400;
+    line-height: 1.0;
+    color: var(--text);
+    letter-spacing: -0.025em;
+    margin-bottom: 56px;
+    max-width: 760px;
+  }
+
+  #about p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    max-width: 760px;
+  }
+  #about p:last-child { margin-bottom: 0; }
+  #about p strong { color: var(--text); font-weight: 500; }
+
+  .principles { display: grid; gap: 24px; }
+  .principle {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 36px 40px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .principle::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--accent-deep);
+    transition: background 0.3s ease;
+  }
+  .principle:hover {
+    border-color: var(--border-bright);
+    background: var(--surface-elevated);
+  }
+  .principle:hover::before { background: var(--accent); }
+  .principle .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .principle h3 {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 36, "SOFT" 50;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text);
+    letter-spacing: -0.015em;
+    margin-bottom: 14px;
+  }
+  .principle p {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  .projects-grid { display: grid; gap: 32px; }
+  .project {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 44px 48px;
+    transition: all 0.3s ease;
+  }
+  .project:hover {
+    border-color: var(--border-bright);
+    background: var(--surface-elevated);
+    transform: translateY(-2px);
+  }
+  .project .project-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .project h3 {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 72, "SOFT" 40;
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .project .tagline {
+    font-size: 16px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .project .description {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+  }
+  .project .stack {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 28px;
+    padding: 14px 18px;
+    background: rgba(10, 22, 40, 0.5);
+    border-left: 2px solid var(--accent-deep);
+    border-radius: 2px;
+  }
+  .project .stack-label {
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 11px;
+    margin-right: 8px;
+  }
+  .project .links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .project .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1px solid var(--border-bright);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+  }
+  .project .link:hover {
+    background: var(--accent-glow);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .project .link svg { width: 14px; height: 14px; }
+
+  .timeline {
+    border-left: 1px solid var(--border);
+    padding-left: 36px;
+    margin-left: 8px;
+  }
+  .job { position: relative; padding-bottom: 44px; }
+  .job:last-child { padding-bottom: 0; }
+  .job::before {
+    content: '';
+    position: absolute;
+    left: -42px;
+    top: 8px;
+    width: 11px;
+    height: 11px;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  .job:hover::before {
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+  }
+  .job .meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .job h3 {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 36, "SOFT" 40;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .job .role {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .job p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 720px;
+  }
+
+  .education-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px 36px;
+    margin-top: 32px;
+  }
+  .education-block h3 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .edu-item {
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+  }
+  .edu-item:first-of-type {
+    padding-top: 0;
+    border-top: none;
+  }
+  .edu-item:last-of-type {
+    padding-bottom: 0;
+  }
+  .edu-meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .education-block .degree {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 24;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .education-block .school {
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  #contact {
+    background: linear-gradient(180deg, transparent 0%, rgba(52, 212, 228, 0.025) 100%);
+  }
+  #contact p.lead {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 720px;
+    margin-bottom: 40px;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    max-width: 880px;
+  }
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 26px 28px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .contact-card:hover {
+    border-color: var(--accent);
+    background: var(--surface-elevated);
+    transform: translateY(-2px);
+  }
+  .contact-card .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .contact-card .value {
+    font-size: 16px;
+    color: var(--text);
+    word-break: break-word;
+  }
+  .contact-card:hover .value { color: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 56px 32px 40px;
+    max-width: var(--content-width);
+    margin: 80px auto 0;
+  }
+  footer .footer-inner { display: flex; flex-direction: column; gap: 16px; }
+  footer p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+  footer p.off-hours { font-style: italic; color: var(--text-dim); }
+  footer .copyright {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 768px) {
+    section { padding: 80px 24px; }
+    #hero { padding-top: 110px; min-height: 80vh; }
+    nav .nav-inner { padding: 14px 20px; }
+    nav ul { gap: 18px; }
+    nav ul a { font-size: 13px; }
+    nav .brand { font-size: 16px; }
+    .project { padding: 32px 26px; }
+    .principle { padding: 28px 26px; }
+    .timeline { padding-left: 24px; }
+    .job::before { left: -30px; }
+    footer { margin-top: 40px; padding: 40px 24px 32px; }
+  }
+  @media (max-width: 520px) {
+    nav ul { display: none; }
+    #hero .ctas { gap: 10px; }
+    .btn { padding: 11px 16px; font-size: 13px; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">Shrikant Sharma</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#how-i-work">How I Work</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<section id="hero">
+  <div class="eyebrow"><span></span>Pharma &amp; Financial Services · ~8 years</div>
+  <h1>Data Scientist</h1>
+  <p class="subhead">Shipping production ML, agentic AI, and grounded RAG for regulated industries.</p>
+  <div class="elevator">
+    <p>~8 years building data systems across pharma compliance at Amgen and financial services risk at American Express. Both regulated industries. Both demand interpretability and rigorous evaluation.</p>
+    <p>Three end-to-end portfolio projects recently shipped — a clinical-trial RAG system with agentic Corrective-RAG and a cross-encoder reranker, a patient risk stratification pipeline with causal inference and survival analysis deployed live on AWS Lambda, and a pharma compliance spend analytics system on 16M+ CMS Open Payments records across Pandas, Snowflake, and PySpark.</p>
+  </div>
+  <div class="ctas">
+    <a href="#projects" class="btn btn-primary">
+      View Projects
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="Shrikant_Sharma_Resume.pdf" class="btn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+      Download Resume
+    </a>
+    <a href="https://www.linkedin.com/in/shrikant-sharma/" class="btn btn-icon" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+    </a>
+    <a href="https://github.com/Shrikant-Sharma" class="btn btn-icon" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    </a>
+  </div>
+</section>
+
+<section id="about" class="narrow">
+  <div class="section-label">About</div>
+  <h2 class="section-title">Eight years inside regulated industries.</h2>
+  <p class="reveal">I'm a Data Scientist with ~8 years of work across pharma and financial services. At Amgen (2022–2026), I architected the Python ETL behind the company's CMS Open Payments federal submission (~475K records, ~$241M annually), built a multivariate country risk scoring system across 65+ countries presented to Directors and Executive Directors, and led an NLP initiative that cut manual document categorization by 25%. At American Express via Atos Syntel (2016–2019), I built risk scoring pipelines on 10M+ transactions and the team's A/B testing framework that ran 12+ cycles per year for two years.</p>
+  <p class="reveal">My work has always lived inside <strong>regulated industries where explainability matters more than fluency</strong>. A model that can't be defended to a regulator doesn't ship. A score that can't be traced to a feature doesn't get used. Those constraints are why I lean into causal inference, rigorous evaluation, and audit-defensible methodology — not the slowest path, just the only one that survives contact with production in healthcare and finance.</p>
+  <p class="reveal">I'm targeting <strong>Senior Data Scientist, ML Engineer, and AI Engineer roles</strong> where production ML, agentic AI, and rigorous evaluation matter. Open to remote, hybrid, or onsite for the right opportunity. If your team works on hard problems in regulated industries — or just wants to ship ML that holds up — I'd love to talk.</p>
+</section>
+
+<section id="how-i-work" class="narrow">
+  <div class="section-label">How I Work</div>
+  <h2 class="section-title">Four principles in every project I've shipped.</h2>
+  <div class="principles">
+    <div class="principle reveal">
+      <div class="num">Principle 01</div>
+      <h3>Test on your domain before you trust the benchmark.</h3>
+      <p>The biggest unlock in my Clinical Trial RAG project was switching from MiniLM to PubMedBERT — not because the leaderboards said so, but because MiniLM scored pembrolizumab vs Keytruda (same drug, brand vs generic) at <strong style="color:var(--accent)">0.24 cosine similarity</strong>. Same drug, treated as unrelated. Pick five domain synonym pairs and check cosine. Most leaderboard wins die in production for this exact reason.</p>
+    </div>
+    <div class="principle reveal">
+      <div class="num">Principle 02</div>
+      <h3>Defense in depth beats single-point precision.</h3>
+      <p>My RAG system runs three independent refusal gates: similarity threshold, LLM-as-judge document grader, and a generation-prompt refusal phrase. Each gate is allowed to be lenient because the composite is strict. Catastrophic out-of-domain queries fail at gate one; topically-adjacent-but-irrelevant queries (the <strong style="color:var(--accent)">0.91 cosine adversarial cases</strong> threshold alone misses) fail at gate two; insufficient context fails at gate three.</p>
+    </div>
+    <div class="principle reveal">
+      <div class="num">Principle 03</div>
+      <h3>Library defaults aren't methodology.</h3>
+      <p>My patient risk stratification project includes a causal inference layer on the NHEFS smoking-cessation cohort. The DoWhy library default produced +2.04 kg vs the Hernán-Robins reference of +3.4 kg — a <strong style="color:var(--accent)">40% bias</strong>. Rebuilding per the methodology spec (quadratic confounder terms, logit propensity model, 1:1 nearest-neighbor matching with a 0.2 SD caliper, without replacement) put my estimate within 0.2 kg of reference. Three-way convergence with G-computation and IPW confirmed it.</p>
+    </div>
+    <div class="principle reveal">
+      <div class="num">Principle 04</div>
+      <h3>The platform isn't the product, but the platform matters.</h3>
+      <p>My pharma compliance project runs the same feature pipeline across <strong style="color:var(--accent)">Pandas, Snowflake, and PySpark</strong> with row-level equivalence verified. Real ML systems migrate across platforms as they scale. Proving the architecture survives that migration is part of the design, not an afterthought.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2 class="section-title">Three end-to-end systems, all live.</h2>
+  <div class="projects-grid">
+
+    <article class="project reveal">
+      <div class="project-num">Project 01 · Clinical AI</div>
+      <h3>Clinical Trial Intelligence System</h3>
+      <p class="tagline">Agentic RAG with a cross-encoder reranker for oncology trial Q&amp;A.</p>
+      <p class="description">A natural-language interface over <strong style="color:var(--text)">484 ClinicalTrials.gov oncology trials</strong> (3,264 chunks). PubMedBERT for domain embeddings, FAISS for similarity search, Groq Llama 3.3 70B for generation. Three architectural iterations: baseline RAG → agentic Corrective-RAG via LangGraph (LLM-as-judge document grading, query rewriting, bounded retries) → cross-encoder reranker (MS-MARCO MiniLM-L-6-v2) that halved in-corpus refusal rate from <strong style="color:var(--accent)">67% to 33%</strong> on a 6-query LLM-judged evaluation. Three refusal gates for safety. Graceful rate-limit error handling on the live demo.</p>
+      <div class="stack"><span class="stack-label">Stack</span>Python · LangGraph · Sentence Transformers · PubMedBERT · Cross-Encoder · FAISS · Groq Llama 3.3 70B · RAGAS · Streamlit</div>
+      <div class="links">
+        <a class="link" href="https://shrikant-clinical-rag.streamlit.app" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          Live demo
+        </a>
+        <a class="link" href="https://github.com/Shrikant-Sharma/clinical-trial-rag" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub
+        </a>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-num">Project 02 · Clinical ML &amp; Causal</div>
+      <h3>Patient Risk Stratification Pipeline</h3>
+      <p class="tagline">Production XGBoost + causal inference + survival analysis, deployed live on AWS Lambda.</p>
+      <p class="description">End-to-end ML pipeline on the UCI Heart Disease dataset (920 patients). MLflow-tracked comparison across 5 model families surfaced XGBoost at <strong style="color:var(--accent)">0.95 AUC, 0.93 recall</strong> at the clinical operating threshold, Brier 0.092 with documented calibration analysis. SHAP TreeExplainer for population and per-prediction explainability. Phase 2 extension to causal inference and survival analysis on the NHEFS cohort: propensity score matching + G-computation with DoWhy showed three-way convergence within 0.2 kg of the Hernán-Robins reference; Cox PH and Random Survival Forest at 0.80 concordance revealed pure age confounding behind a significant unadjusted log-rank. Deployed as a REST API on AWS Lambda via ECR + Mangum with FastAPI Swagger docs.</p>
+      <div class="stack"><span class="stack-label">Stack</span>Python · Scikit-learn · XGBoost · PyTorch · SHAP · DoWhy · lifelines · scikit-survival · MLflow · FastAPI · Docker · AWS Lambda + ECR</div>
+      <div class="links">
+        <a class="link" href="https://fcwkvdgi7lo2hp2xtfmyxzieia0xmfwr.lambda-url.us-east-1.on.aws/docs" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          Live API (Swagger)
+        </a>
+        <a class="link" href="https://github.com/Shrikant-Sharma/patient-risk-stratification" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub
+        </a>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-num">Project 03 · Compliance Analytics</div>
+      <h3>Pharma Compliance Spend Analytics</h3>
+      <p class="tagline">Anomaly detection on 16M+ real CMS Open Payments records, ported across three compute backends.</p>
+      <p class="description">Real CMS Open Payments data — <strong style="color:var(--accent)">16M+ records, $13B in payments</strong>. Sampled to 989K transactions across 289K healthcare providers for iteration speed. Five HCP-level features. Two-detector anomaly layer (within-specialty z-scores + global IQR with $500 monetary floor) plus an Isolation Forest ML layer on top. Rules-vs-ML reconciliation surfaced three compliance archetypes no single method catches alone — captured specialists, generalists, industry consultants. Same feature pipeline ported across Pandas (laptop), Snowflake (5 SQL queries reproducing EDA), and PySpark (DataFrame + Spark SQL) with row-level equivalence verified. Surfaced finding on real federal data: the top 4 device manufacturers — Arthrex, Stryker, Zimmer Biomet, Smith+Nephew — capture <strong style="color:var(--accent)">59.7% of orthopedic surgery payments</strong>.</p>
+      <div class="stack"><span class="stack-label">Stack</span>Python · Pandas · Scikit-learn · PySpark · Snowflake · Tableau</div>
+      <div class="links">
+        <a class="link" href="https://public.tableau.com/app/profile/shrikant.sharma/viz/pharma_compliance_dashboard/GeographicSpecialtyOverview" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          Tableau dashboards
+        </a>
+        <a class="link" href="https://github.com/Shrikant-Sharma/pharma-compliance-spend-analytics" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub
+        </a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="experience" class="narrow">
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">Pharma and finance, end to end.</h2>
+  <div class="timeline">
+
+    <div class="job reveal">
+      <div class="meta">Sept 2022 — May 2026 · Pharma, Compliance Analytics</div>
+      <h3>Amgen</h3>
+      <div class="role">Data Scientist</div>
+      <p>Architected the CMS Open Payments federal submission ETL (~475K records, ~$241M annually) on AWS + Databricks. Built multivariate country risk scoring across 65+ countries presented to Directors and Executive Directors; surfaced 3 high-risk markets undetected by the prior model. Developed statistical flagging across 5 transaction-monitoring processes. Led the team's NLP/GenAI exploration; cut manual document categorization by 25%. Owned end-to-end knowledge transfer of three concurrent workflows during the offshoring transition.</p>
+    </div>
+
+    <div class="job reveal">
+      <div class="meta">May 2022 — Aug 2022 · Internship</div>
+      <h3>Nugget.ai</h3>
+      <div class="role">Data Science Intern</div>
+      <p>Built ML classification models that improved baseline matching accuracy by 15%. Engineered 20+ features across structural, linguistic, behavioral, and content-based categories.</p>
+    </div>
+
+    <div class="job reveal">
+      <div class="meta">Jan 2018 — Aug 2019 · Financial Services, Risk Modeling</div>
+      <h3>Atos Syntel <span style="color:var(--text-muted);font-weight:400">— at American Express</span></h3>
+      <div class="role">Data Scientist</div>
+      <p>Built risk scoring pipelines on 10M+ transactions covering spending velocity, geographic anomalies, behavioral segmentation. Implemented the team's A/B testing framework — sample sizing, randomization, multiple-testing correction, SRM validation — across 12+ cycles per year for two years. Executive Tableau dashboards consolidating 5+ source systems that informed $2M+ in risk decisions.</p>
+    </div>
+
+    <div class="job reveal">
+      <div class="meta">Sept 2016 — Dec 2017</div>
+      <h3>Atos Syntel <span style="color:var(--text-muted);font-weight:400">— at American Express</span></h3>
+      <div class="role">Data Analyst</div>
+      <p>Production SQL workflows processing 5M+ transactions monthly with 99.5% accuracy. Automated weekly and monthly portfolio reporting, freeing 30+ hours/month of manual analyst time.</p>
+    </div>
+
+  </div>
+
+  <div class="education-block reveal">
+    <h3>Education</h3>
+    <div class="edu-item">
+      <div class="edu-meta">May 2022</div>
+      <div class="degree">M.S. Data Analytics</div>
+      <div class="school">Clark University</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-meta">Feb 2016</div>
+      <div class="degree">B.E. Engineering</div>
+      <div class="school">Sant Gadge Baba Amravati University</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="narrow">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Let's talk.</h2>
+  <p class="lead">I'm targeting Senior Data Scientist, ML Engineer, and AI Engineer roles where production ML, agentic AI, and rigorous evaluation matter. Open to remote, hybrid, or onsite. If your team is hiring — or if you want to compare notes on agentic RAG, causal inference, or shipping ML in regulated industries — reach out.</p>
+  <div class="contact-grid">
+    <a class="contact-card reveal" href="mailto:shrikant.sharma@myyahoo.com">
+      <div class="label">Email</div>
+      <div class="value">shrikant.sharma@myyahoo.com</div>
+    </a>
+    <a class="contact-card reveal" href="https://www.linkedin.com/in/shrikant-sharma/" target="_blank" rel="noopener">
+      <div class="label">LinkedIn</div>
+      <div class="value">linkedin.com/in/shrikant-sharma</div>
+    </a>
+    <a class="contact-card reveal" href="https://github.com/Shrikant-Sharma" target="_blank" rel="noopener">
+      <div class="label">GitHub</div>
+      <div class="value">github.com/Shrikant-Sharma</div>
+    </a>
+    <a class="contact-card reveal" href="Shrikant_Sharma_Resume.pdf" target="_blank" rel="noopener">
+      <div class="label">Resume</div>
+      <div class="value">Download PDF</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p class="off-hours">Off-hours: hiking state parks with my dog, skiing, trance music (Armin van Buuren), strength training.</p>
+    <p class="copyright">© 2026 SHRIKANT SHARMA · BUILT WITH HTML &amp; CSS ON GITHUB PAGES</p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
