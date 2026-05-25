@@ -11,6 +11,17 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Shrikant Sharma — Data Scientist">
 <meta property="og:description" content="Shipping production ML, agentic AI, and grounded RAG for regulated industries.">
+<meta property="og:url" content="https://shrikant-sharma.github.io">
+<meta property="og:image" content="https://shrikant-sharma.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Shrikant Sharma — Data Scientist. Pharma & Financial Services. Shipping production ML, agentic AI, and grounded RAG for regulated industries.">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shrikant Sharma — Data Scientist">
+<meta name="twitter:description" content="Shipping production ML, agentic AI, and grounded RAG for regulated industries.">
+<meta name="twitter:image" content="https://shrikant-sharma.github.io/og-image.png">
 
 <!-- Favicon: navy square with cyan S -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a1628'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='62' font-weight='500' text-anchor='middle' fill='%2334d4e4'%3ES%3C/text%3E%3C/svg%3E">
@@ -845,7 +856,7 @@
     <div class="about-text">
       <p class="reveal">I'm a Data Scientist with ~8 years of work across pharma and financial services. At Amgen (2022–2026), I architected the Python ETL behind the company's CMS Open Payments federal submission (~475K records, ~$241M annually), built a multivariate country risk scoring system across 65+ countries presented to Directors and Executive Directors, and led an NLP initiative that cut manual document categorization by 25%. At American Express via Atos Syntel (2016–2019), I built risk scoring pipelines on 10M+ transactions and the team's A/B testing framework that ran 12+ cycles per year for two years.</p>
       <p class="reveal">My work has always lived inside <strong>regulated industries where explainability matters more than fluency</strong>. A model that can't be defended to a regulator doesn't ship. A score that can't be traced to a feature doesn't get used. Those constraints are why I lean into causal inference, rigorous evaluation, and audit-defensible methodology — not the slowest path, just the only one that survives contact with production in healthcare and finance.</p>
-      <p class="reveal">I'm targeting <strong>Senior Data Scientist, ML Engineer, and AI Engineer roles</strong> where production ML, agentic AI, and rigorous evaluation matter. Open to remote, hybrid, or onsite for the right opportunity. If your team works on hard problems in regulated industries — or just wants to ship ML that holds up — I'd love to talk.</p>
+      <p class="reveal">I'm targeting <strong>Senior Data Scientist, ML Engineer, and AI Engineer roles</strong> where production ML, agentic AI, and rigorous evaluation matter. Open to remote, hybrid, or onsite for the right opportunity. US citizen — no sponsorship required. If your team works on hard problems in regulated industries — or just wants to ship ML that holds up — I'd love to talk.</p>
     </div>
     <div class="profile-photo-wrap reveal">
       <img class="profile-photo" src="profile.jpg" alt="Shrikant Sharma" loading="lazy">
@@ -907,7 +918,7 @@
       <div class="project-num">Project 02 · Clinical ML &amp; Causal</div>
       <h3>Patient Risk Stratification Pipeline</h3>
       <p class="tagline">Production XGBoost + causal inference + survival analysis, deployed live on AWS Lambda.</p>
-      <p class="description">End-to-end ML pipeline on the UCI Heart Disease dataset (920 patients). MLflow-tracked comparison across 5 model families surfaced XGBoost at <strong style="color:var(--accent)">0.95 AUC, 0.93 recall</strong> at the clinical operating threshold, Brier 0.092 with documented calibration analysis. SHAP TreeExplainer for population and per-prediction explainability. Phase 2 extension to causal inference and survival analysis on the NHEFS cohort: propensity score matching + G-computation with DoWhy showed three-way convergence within 0.2 kg of the Hernán-Robins reference; Cox PH and Random Survival Forest at 0.80 concordance revealed pure age confounding behind a significant unadjusted log-rank. Deployed as a REST API on AWS Lambda via ECR + Mangum with FastAPI Swagger docs.</p>
+      <p class="description">End-to-end ML pipeline on the UCI Heart Disease dataset (303 patients, 13 clinical features). MLflow-tracked comparison across 5 model families surfaced XGBoost at <strong style="color:var(--accent)">0.95 AUC, 0.93 recall</strong> at the clinical operating threshold, Brier 0.092 with documented calibration analysis. SHAP TreeExplainer for population and per-prediction explainability. Phase 2 extension to causal inference and survival analysis on the NHEFS cohort: propensity score matching + G-computation with DoWhy showed three-way convergence within 0.2 kg of the Hernán-Robins reference; Cox PH and Random Survival Forest at 0.80 concordance revealed pure age confounding behind a significant unadjusted log-rank. Deployed as a REST API on AWS Lambda via ECR + Mangum with FastAPI Swagger docs.</p>
       <div class="stack"><span class="stack-label">Stack</span>Python · Scikit-learn · XGBoost · PyTorch · SHAP · DoWhy · lifelines · scikit-survival · MLflow · FastAPI · Docker · AWS Lambda + ECR</div>
       <div class="links">
         <a class="link" href="https://fcwkvdgi7lo2hp2xtfmyxzieia0xmfwr.lambda-url.us-east-1.on.aws/docs" target="_blank" rel="noopener">
@@ -995,7 +1006,7 @@
 <section id="contact" class="narrow">
   <div class="section-label">Contact</div>
   <h2 class="section-title">Let's talk.</h2>
-  <p class="lead">I'm targeting Senior Data Scientist, ML Engineer, and AI Engineer roles where production ML, agentic AI, and rigorous evaluation matter. Open to remote, hybrid, or onsite. If your team is hiring — or if you want to compare notes on agentic RAG, causal inference, or shipping ML in regulated industries — reach out.</p>
+  <p class="lead">If your team is hiring — or if you want to compare notes on agentic RAG, causal inference, or shipping ML in regulated industries — reach out.</p>
   <div class="contact-grid">
     <a class="contact-card reveal" href="mailto:shrikant.sharma@myyahoo.com">
       <div class="label">Email</div>
