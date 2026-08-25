@@ -1000,8 +1000,8 @@
     <article class="project reveal">
       <div class="project-num">Project 01 · Clinical AI</div>
       <h3>Clinical Trial Intelligence System</h3>
-      <p class="tagline">Agentic RAG with a cross-encoder reranker for oncology trial Q&amp;A.</p>
-      <p class="description">A natural-language interface over <strong style="color:var(--text)">484 ClinicalTrials.gov oncology trials</strong> (3,264 chunks). PubMedBERT for domain embeddings, FAISS for similarity search, Groq Llama 3.3 70B for generation. Three architectural iterations: baseline RAG → agentic Corrective-RAG via LangGraph (LLM-as-judge document grading, query rewriting, bounded retries) → cross-encoder reranker (MS-MARCO MiniLM-L-6-v2) that halved in-corpus refusal rate from <strong style="color:var(--accent)">67% to 33%</strong> on the 6 in-corpus queries within a 25-query golden set. Three independent guardrails for safety. Graceful rate-limit error handling on the live demo.</p>
+      <p class="tagline">Agentic RAG with a cross-encoder reranker for oncology and cardio-metabolic trial Q&amp;A.</p>
+      <p class="description">A natural-language interface over <strong style="color:var(--text)">484 ClinicalTrials.gov oncology and cardio-metabolic trials</strong> (3,264 chunks). PubMedBERT for domain embeddings, FAISS for similarity search, Groq Llama 3.3 70B for generation. Three architectural iterations: baseline RAG → agentic Corrective-RAG via LangGraph (LLM-as-judge document grading, query rewriting, bounded retries) → cross-encoder reranker (MS-MARCO MiniLM-L-6-v2) that halved in-corpus refusal rate from <strong style="color:var(--accent)">67% to 33%</strong> on the 6 in-corpus queries within a 25-query golden set. Three independent guardrails for safety. Graceful rate-limit error handling on the live demo.</p>
       <div class="stack"><span class="stack-label">Stack</span>Python · LangGraph · Sentence Transformers · PubMedBERT · Cross-Encoder · FAISS · Groq Llama 3.3 70B · RAGAS · Streamlit</div>
       <div class="links">
         <a class="link" href="https://shrikant-clinical-rag.streamlit.app" target="_blank" rel="noopener">
